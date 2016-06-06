@@ -38,7 +38,8 @@ echo "unpacking ${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip to /mnt"
 unzip -q /mnt/${WSO2_SERVER}-${WSO2_SERVER_VERSION}.zip -d /mnt
 mkdir -p ${jdk_install_dir}
 echo "unpacking the JDK to ${jdk_install_dir}"
-tar -xf /mnt/jdk*tar.gz -C ${jdk_install_dir} --strip-components=1
+# tar -xf /mnt/jdk*tar.gz -C ${jdk_install_dir} --strip-components=1
+gunzip < /mnt/jdk*tar.gz | tar -xf - -C ${jdk_install_dir} --strip-components=1
 ln -s ${jdk_install_dir} ${java_home_dir}
 echo "created symlink for java: ${java_home_dir} -> ${jdk_install_dir}"
 
